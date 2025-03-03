@@ -11,11 +11,11 @@ void consoleStatusCallback(const std::string& message) {
 int main()
 {
 	KXStatus status;
-	if (!status.CheckStatus())
-	{
-		system("PAUSE");
-		return 0;
-	}
+	// if (!status.CheckStatus())
+	// {
+	// 	system("PAUSE");
+	// 	return 0;
+	// }
 
 	Hack hack(consoleStatusCallback);
 	HackGUI gui(hack);
