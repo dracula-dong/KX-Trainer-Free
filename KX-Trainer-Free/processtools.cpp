@@ -17,14 +17,23 @@ DWORD GetProcID(wchar_t* exeName)
 	{
 		return 0;
 	}
-
+    int matchCount = 0;
 	do
 	{
-		if (!wcscmp(procEntry.szExeFile, exeName))
-		{
-			CloseHandle(hSnapshot);
-			return procEntry.th32ProcessID;
-		}
+		// if (!wcscmp(procEntry.szExeFile, exeName))
+		// {
+		// 	CloseHandle(hSnapshot);
+		// 	return procEntry.th32ProcessID;
+		// }
+		if (wcscmp(procEntry.szExeFile, exeName) == 0)
+        {
+            matchCount++;
+            if (matchCount == 2)
+            {
+                return procEntry.th32ProcessID;
+                break;
+            }
+        }
 	} while (Process32Next(hSnapshot, &procEntry));
 
 	CloseHandle(hSnapshot);
@@ -45,12 +54,18 @@ MODULEENTRY32 GetModule(DWORD dwProcID, wchar_t* moduleName)
 		curr.dwSize = sizeof(MODULEENTRY32);
 		if (Module32First(hSnapshot, &curr))
 		{
+			int matchCount = 0;
 			do
 			{
 				if (!wcscmp(curr.szModule, moduleName))
 				{
-					modEntry = curr;
-					break;
+
+					matchCount++;
+					if (matchCount == 2)
+					{
+						modEntry = curr;
+						break;
+					}
 				}
 			} while (Module32Next(hSnapshot, &curr));
 		}
