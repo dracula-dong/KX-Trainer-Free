@@ -54,18 +54,18 @@ MODULEENTRY32 GetModule(DWORD dwProcID, wchar_t* moduleName)
 		curr.dwSize = sizeof(MODULEENTRY32);
 		if (Module32First(hSnapshot, &curr))
 		{
-			int matchCount = 0;
+			// int matchCount = 0;
 			do
 			{
 				if (!wcscmp(curr.szModule, moduleName))
 				{
 
-					matchCount++;
-					if (matchCount == 2)
-					{
-						modEntry = curr;
-						break;
-					}
+					// matchCount++;
+					// if (matchCount == 2)
+					// {
+					modEntry = curr;
+					break;
+					// }
 				}
 			} while (Module32Next(hSnapshot, &curr));
 		}
