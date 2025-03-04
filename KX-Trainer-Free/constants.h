@@ -54,10 +54,10 @@ namespace Constants {
 
     // Settings
     namespace Settings {
-        constexpr float SPRINT_SPEED = 12.22f;
+        constexpr float SPRINT_SPEED = 50.22f;
         constexpr float NORMAL_SPEED = 9.1875f;
-        constexpr float SUPER_SPRINT_SPEED = 60.0f;
-        constexpr float FLY_SPEED = 60.0f;
+        constexpr float SUPER_SPRINT_SPEED = 5000.0f;
+        constexpr float FLY_SPEED = 5000.0f;
         constexpr float FLY_NORMAL_SPEED = -40.625f;
         constexpr float WALLCLIMB_SPEED = 40.0f;
         constexpr float WALLCLIMB_NORMAL_SPEED = 2.1875f;
